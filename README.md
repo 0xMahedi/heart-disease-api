@@ -92,44 +92,7 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
-## Dataset and Training
 
-The CSV is not bundled with this repository. Download the dataset from:
-
-<https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset>
-
-Place the downloaded CSV at `data/heart.csv`. Do not fabricate a replacement dataset. The
-training script checks the required feature names and `target` column, rejects unexpected
-non-numeric values, and allows missing feature values to be imputed by the pipeline.
-
-Train the model from the project root:
-
-```bash
-python train.py
-```
-
-The script uses a reproducible `random_state=42` split, trains a pipeline containing median
-imputation, standardization, and `LogisticRegression`, prints accuracy, precision, recall,
-and F1 score, and saves this artifact:
-
-```text
-model/heart_model.joblib
-```
-
-The artifact contains the fitted pipeline, the exact feature order, the target name, the
-model type, and evaluation metrics. The generated model should be included in Git if the
-assignment requires a ready-to-run deployment. Review the dataset's license before
-publishing the CSV itself.
-
-## Run Locally Without Docker
-
-After training the model, start the API from the project root:
-
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000
-```
-
-The API is available at `http://localhost:8000`.
 
 ## Docker
 
@@ -267,8 +230,4 @@ The included `render.yaml` defines a Docker web service and `/health` health che
 Render, use **New +** -> **Blueprint** and select the repository. Review the generated service
 before applying it.
 
-## Disclaimer
 
-This is an academic machine learning project. Predictions are for demonstration and
-educational purposes only and are **not medical advice**. Do not use this API to diagnose,
-treat, or make decisions about a person's health.
