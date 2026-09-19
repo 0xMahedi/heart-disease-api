@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: heart-disease-prediction-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
